@@ -1,12 +1,37 @@
 #include <iostream>
 
 void printGrid();
+bool isValidRow(int grid[9][9], int row, int col);
 
- int main()
+int main()
 {
-    printGrid();
+    int sudokuGrid[9][9] = {
+        {1, 2, 6, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9}
+    };
+    std::cout << isValidRow(sudokuGrid, 0, 5);
 
     return 0;
+}
+
+// checks that the row is valid according to the constraints
+bool isValidRow(int grid[9][9], int row, int col) 
+{
+    int cell {grid[row][col]};
+
+    for (int j = 0; j < col; j++) {
+        if (grid[row][j] == cell) {
+            return false;
+        }
+    }
+    return true;
 }
 
 void printGrid()
