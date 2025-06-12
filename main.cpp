@@ -2,19 +2,20 @@
 
 void printGrid(const int (&grid)[9][9]);
 bool isValidRow(int grid[9][9], int row, int col);
+bool isValidColumn(int grid[9][9], int row, int col);
 
 int main()
 {
     int sudokuGrid[9][9] = {
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9}
+        {2, 2, 3, 4, 5, 6, 7, 8, 9},
+        {3, 2, 3, 4, 5, 6, 7, 8, 9},
+        {4, 2, 3, 4, 5, 6, 7, 8, 9},
+        {5, 2, 3, 4, 5, 6, 7, 8, 9},
+        {6, 2, 3, 4, 5, 6, 7, 8, 9},
+        {7, 2, 3, 4, 5, 6, 7, 8, 9},
+        {8, 2, 3, 4, 5, 6, 7, 8, 9},
+        {9, 2, 3, 4, 5, 6, 7, 8, 9}
     };
     printGrid(sudokuGrid);
     return 0;
@@ -27,6 +28,19 @@ bool isValidRow(int grid[9][9], int row, int col)
 
     for (int j = 0; j < col; j++) {
         if (grid[row][j] == cell) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// checks that the column is valid according to the constraints
+bool isValidColumn(int grid[9][9], int row, int col)
+{
+    int cell {grid[row][col]};
+
+    for (int i = 0; i < row; i++) {
+        if (grid[i][col] == cell) {
             return false;
         }
     }
