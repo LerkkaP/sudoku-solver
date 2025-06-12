@@ -1,12 +1,12 @@
 #include <iostream>
 
-void printGrid();
+void printGrid(const int (&grid)[9][9]);
 bool isValidRow(int grid[9][9], int row, int col);
 
 int main()
 {
     int sudokuGrid[9][9] = {
-        {1, 2, 6, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
@@ -16,8 +16,7 @@ int main()
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9}
     };
-    std::cout << isValidRow(sudokuGrid, 0, 5);
-
+    printGrid(sudokuGrid);
     return 0;
 }
 
@@ -34,20 +33,8 @@ bool isValidRow(int grid[9][9], int row, int col)
     return true;
 }
 
-void printGrid()
+void printGrid(const int (&grid)[9][9])
 {
- int sudokuGrid[9][9] = {
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9}
-    };
-
     for (int i = 0; i < 9; i++) {
         if (i == 3 || i == 6) {
             std::cout << "\n";
@@ -60,7 +47,7 @@ void printGrid()
             if (j == 3 || j == 6) {
                 std::cout << "| ";
             }
-            std::cout << sudokuGrid[i][j];
+            std::cout << grid[i][j];
             std::cout << " ";
         }
     }
