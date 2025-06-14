@@ -9,7 +9,7 @@ int main()
 {
     int sudokuGrid[9][9] = {
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {4, 5, 9, 4, 5, 6, 7, 8, 9},
+        {4, 5, 9, 1, 5, 6, 7, 8, 9},
         {9, 8, 7, 4, 5, 6, 7, 8, 9},
         {4, 2, 3, 4, 5, 6, 7, 8, 9},
         {5, 2, 3, 2, 2, 3, 7, 8, 9},
@@ -27,7 +27,11 @@ bool isValidRow(int grid[9][9], int row, int col)
 {
     int cell {grid[row][col]};
 
-    for (int j = 0; j < col; j++) {
+    for (int j = 0; j <= 9; j++) {
+        // if the column is same as the cell we are comparing to, we skip
+        if (j == col) {
+            continue;
+        }
         if (grid[row][j] == cell) {
             return false;
         }
@@ -40,7 +44,11 @@ bool isValidColumn(int grid[9][9], int row, int col)
 {
     int cell {grid[row][col]};
 
-    for (int i = 0; i < row; i++) {
+    for (int i = 0; i <= 9; i++) {
+        // if the row is same as the cell we are comparing to, we skip
+        if (i == row) {
+            continue;
+        }
         if (grid[i][col] == cell) {
             return false;
         }
