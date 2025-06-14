@@ -1,33 +1,34 @@
 #include <iostream>
+#include <array>
 
-void printGrid(const int (&grid)[9][9]);
-bool isValidRow(int grid[9][9], int row, int col);
-bool isValidColumn(int grid[9][9], int row, int col);
-bool isValidSquare(int grid[9][9], int row, int col);
+void printGrid(const std::array<std::array<int, 9>, 9> &grid);
+bool isValidRow(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
+bool isValidColumn(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
+bool isValidSquare(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
 
 int main()
 {
-    int sudokuGrid[9][9] = {
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {4, 5, 9, 1, 5, 6, 7, 8, 9},
-        {9, 8, 7, 4, 5, 6, 7, 8, 9},
-        {4, 2, 3, 4, 5, 6, 7, 8, 9},
-        {5, 2, 3, 2, 2, 3, 7, 8, 9},
-        {6, 2, 3, 4, 5, 6, 7, 8, 9},
-        {7, 2, 3, 7, 8, 9, 7, 8, 9},
-        {8, 2, 3, 4, 5, 6, 7, 8, 9},
-        {9, 2, 3, 4, 5, 6, 7, 8, 9}
-    };
+    std::array<std::array<int, 9>, 9> sudokuGrid = {{
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+        {{1, 2, 3, 4, 5, 6, 7, 8, 9}}
+    }};
     printGrid(sudokuGrid);
     return 0;
 }
 
 // checks that the row is valid according to the constraints
-bool isValidRow(int grid[9][9], int row, int col) 
+bool isValidRow(const std::array<std::array<int, 9>, 9> &grid, int row, int col) 
 {
     int cell {grid[row][col]};
 
-    for (int j = 0; j <= 9; j++) {
+    for (int j = 0; j < 9; j++) {
         // if the column is same as the cell we are comparing to, we skip
         if (j == col) {
             continue;
@@ -40,11 +41,11 @@ bool isValidRow(int grid[9][9], int row, int col)
 }
 
 // checks that the column is valid according to the constraints
-bool isValidColumn(int grid[9][9], int row, int col)
+bool isValidColumn(const std::array<std::array<int, 9>, 9> &grid, int row, int col)
 {
     int cell {grid[row][col]};
 
-    for (int i = 0; i <= 9; i++) {
+    for (int i = 0; i < 9; i++) {
         // if the row is same as the cell we are comparing to, we skip
         if (i == row) {
             continue;
@@ -57,7 +58,7 @@ bool isValidColumn(int grid[9][9], int row, int col)
 }
 
 // checks that the square is valid according to the constraints
-bool isValidSquare(int grid[9][9], int row, int col)
+bool isValidSquare(const std::array<std::array<int, 9>, 9> &grid, int row, int col)
 {
     int cell {grid[row][col]};
 
@@ -80,7 +81,7 @@ bool isValidSquare(int grid[9][9], int row, int col)
     return true;
 }
 
-void printGrid(const int (&grid)[9][9])
+void printGrid(const std::array<std::array<int, 9>, 9> &grid)
 {
     for (int i = 0; i < 9; i++) {
         if (i == 3 || i == 6) {
@@ -98,6 +99,7 @@ void printGrid(const int (&grid)[9][9])
             std::cout << " ";
         }
     }
+    std::cout << '\n';
 }
 
 
