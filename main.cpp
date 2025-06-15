@@ -6,11 +6,11 @@ bool isValidRow(const std::array<std::array<int, 9>, 9> &grid, int row, int col)
 bool isValidColumn(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
 bool isValidSquare(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
 bool isValid(const std::array<std::array<int, 9>, 9> &grid, int row, int col);
-void solveSudoku(std::array<std::array<int, 9>, 9> &grid);
+bool backtrack(std::array<std::array<int, 9>, 9> &grid);
 
 int main()
 {
-    std::array<std::array<int, 9>, 9> sudokuGrid = {{
+    std::array<std::array<int, 9>, 9> sudokuGrid1 = {{
         {{0, 0, 2, 0, 1, 5, 0, 7, 8}},
         {{1, 8, 0, 0, 6, 3, 4, 0, 0}},
         {{0, 0, 4, 0, 2, 0, 5, 6, 1}},
@@ -21,8 +21,21 @@ int main()
         {{6, 4, 9, 8, 3, 0, 2, 0, 7}},
         {{0, 0, 7, 0, 0, 0, 0, 1, 0}}
     }};
-    solveSudoku(sudokuGrid);
-    printGrid(sudokuGrid);
+    std::array<std::array<int, 9>, 9> sudokuGrid2 = {{
+        {{0, 7, 0, 0, 5, 0, 0, 0, 8}},
+        {{0, 0, 0, 0, 8, 9, 7, 4, 0}},
+        {{0, 0, 8, 0, 0, 7, 0, 5, 0}},
+        {{0, 3, 0, 9, 0, 0, 0, 0, 2}},
+        {{0, 0, 4, 8, 0, 3, 1, 0, 0}},
+        {{7, 0, 0, 0, 0, 4, 0, 6, 0}},
+        {{0, 8, 0, 7, 0, 0, 5, 0, 0}},
+        {{0, 6, 7, 5, 1, 0, 0, 0, 0}},
+        {{1, 0, 0, 0, 9, 0, 0, 2, 0}}
+    }};
+    backtrack(sudokuGrid1);
+    backtrack(sudokuGrid2);
+    printGrid(sudokuGrid1);
+    printGrid(sudokuGrid2);
     return 0;
 }
 
@@ -84,17 +97,15 @@ bool isValidSquare(const std::array<std::array<int, 9>, 9> &grid, int row, int c
     return true;
 }
 
-bool isValid(std::array<std::array<int, 9>, 9> &grid, int row, int col) {
+bool isValid(const std::array<std::array<int, 9>, 9> &grid, int row, int col) {
     if (isValidRow(grid, row, col) && isValidColumn(grid, row, col) && isValidSquare(grid, row, col)) {
         return true;
     }
     return false;
 }
 
-void solveSudoku(std::array<std::array<int, 9>, 9> &grid)
+bool backtrack(std::array<std::array<int, 9>, 9> &grid)
 {
-
-
     /* PSEUDOCODE
 
     1. Place digit 1 in the first cell containing 0
@@ -106,7 +117,23 @@ void solveSudoku(std::array<std::array<int, 9>, 9> &grid)
            leave the cell 0 and backtrack to last cell then increment by +1.
     
     */
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if (grid[row][col] == 0) {
+                for (int i = 1; i <= 9; i++) {
+                    grid[row][col] = i;
+                    if (isValid(grid, row, col) && backtrack(grid)) {
+                        return true;
+                    }
+                    grid[row][col] = 0;
 
+                }
+                // no number between 1-9 fits the cell
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 void printGrid(const std::array<std::array<int, 9>, 9> &grid)
