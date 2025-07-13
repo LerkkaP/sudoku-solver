@@ -1,11 +1,12 @@
 #include <array>
 #include "constraints.h"
 #include "grid.h"
+#include "constants.h"
 
 namespace {
     bool isValidRow(const Grid &grid, int row, int col, int num) 
     {
-        for (int j = 0; j < 9; ++j) {
+        for (int j = 0; j < Constants::gridSize; ++j) {
             // if the column is same as the cell we are comparing to, skip
             if (j == col) {
                 continue;
@@ -19,7 +20,7 @@ namespace {
 
     bool isValidColumn(const Grid &grid, int row, int col, int num)
     {
-        for (int i = 0; i < 9; ++i) {
+        for (int i = 0; i < Constants::gridSize; ++i) {
             // if the row is same as the cell we are comparing to, we skip
             if (i == row) {
                 continue;
@@ -33,11 +34,11 @@ namespace {
 
     bool isValidSquare(const Grid &grid, int row, int col, int num)
     {
-        int squareStartRow { (row / 3) * 3 };
-        int squareEndRow { squareStartRow + 2 };
+        int squareStartRow { (row / Constants::subGridSize) * Constants::subGridSize };
+        int squareEndRow { squareStartRow + Constants::subGridOffset };
 
-        int squareStartColumn { (col / 3) * 3 };
-        int squareEndColumn { squareStartColumn + 2 };
+        int squareStartColumn { (col / Constants::subGridSize) * Constants::subGridSize };
+        int squareEndColumn { squareStartColumn + Constants::subGridOffset };
 
         for (int i = squareStartRow; i <= squareEndRow; ++i) {
             for (int j = squareStartColumn; j <= squareEndColumn; ++j) {

@@ -2,11 +2,12 @@
 #include "backtrack.h"
 #include "constraints.h"
 #include "grid.h"
+#include "constants.h"
 
 bool backtrack(Grid &grid)
 {   
-    for (int row = 0; row < 9; ++row) {
-        for (int col = 0; col < 9; ++col) {
+    for (int row = 0; row < Constants::gridSize; ++row) {
+        for (int col = 0; col < Constants::gridSize; ++col) {
             // skip non-empty cell
             if (grid[row][col] != 0) {
                 continue;
