@@ -1,7 +1,8 @@
 #include "printGrid.h"
+#include "grid.h"
 #include <iostream>
 
-void printGrid(const std::array<std::array<int, 9>, 9> &grid)
+void printGrid(const Grid &grid)
 {
     for (int i = 0; i < 9; i++) {
         if (i == 3 || i == 6) {

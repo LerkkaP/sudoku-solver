@@ -1,8 +1,9 @@
 #include <array>
 #include "backtrack.h"
 #include "constraints.h"
+#include "grid.h"
 
-bool backtrack(std::array<std::array<int, 9>, 9> &grid)
+bool backtrack(Grid &grid)
 {   
     for (int row = 0; row < 9; ++row) {
         for (int col = 0; col < 9; ++col) {

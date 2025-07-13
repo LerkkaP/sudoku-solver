@@ -2,7 +2,8 @@
 #define BACKTRACK_H
 
 #include <array>
+#include "grid.h"
 
-bool backtrack(std::array<std::array<int, 9>, 9> &grid);
+bool backtrack(Grid &grid);
 
 #endif

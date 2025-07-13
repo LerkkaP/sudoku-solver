@@ -2,7 +2,8 @@
 #define CONSTRAINTS_H
 
 #include <array>
+#include "grid.h"
 
-bool isValid(const std::array<std::array<int, 9>, 9> &grid, int row, int col, int num);
+bool isValid(const Grid &grid, int row, int col, int num);
 
 #endif

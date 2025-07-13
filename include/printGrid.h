@@ -2,7 +2,8 @@
 #define PRINTGRID_H
 
 #include <array>
+#include "grid.h"
 
-void printGrid(const std::array<std::array<int, 9>, 9> &grid);
+void printGrid(const Grid &grid);
 
 #endif

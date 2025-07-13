@@ -1,9 +1,9 @@
 #include <array>
 #include "constraints.h"
+#include "grid.h"
 
 namespace {
-    // checks that the row is valid according to the constraints
-    bool isValidRow(const std::array<std::array<int, 9>, 9> &grid, int row, int col, int num) 
+    bool isValidRow(const Grid &grid, int row, int col, int num) 
     {
         for (int j = 0; j < 9; ++j) {
             // if the column is same as the cell we are comparing to, skip
@@ -17,8 +17,7 @@ namespace {
         return true;
     }
 
-    // checks that the column is valid according to the constraints
-    bool isValidColumn(const std::array<std::array<int, 9>, 9> &grid, int row, int col, int num)
+    bool isValidColumn(const Grid &grid, int row, int col, int num)
     {
         for (int i = 0; i < 9; ++i) {
             // if the row is same as the cell we are comparing to, we skip
@@ -32,8 +31,7 @@ namespace {
         return true;
     }
 
-    // checks that the square is valid according to the constraints
-    bool isValidSquare(const std::array<std::array<int, 9>, 9> &grid, int row, int col, int num)
+    bool isValidSquare(const Grid &grid, int row, int col, int num)
     {
         int squareStartRow { (row / 3) * 3 };
         int squareEndRow { squareStartRow + 2 };
@@ -55,7 +53,7 @@ namespace {
     }
 }
 
-bool isValid(const std::array<std::array<int, 9>, 9> &grid, int row, int col, int num) {
+bool isValid(const Grid &grid, int row, int col, int num) {
 
     return isValidRow(grid, row, col, num) &&
            isValidColumn(grid, row, col, num) &&

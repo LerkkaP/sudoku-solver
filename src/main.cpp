@@ -1,10 +1,11 @@
 #include <array>
 #include "backtrack.h"
 #include "printGrid.h"
+#include "grid.h"
 
 int main()
 {
-    std::array<std::array<int, 9>, 9> sudokuGrid1 = {{
+    Grid sudokuGrid1 = {{
         {{0, 0, 2, 0, 1, 5, 0, 7, 8}},
         {{1, 8, 0, 0, 6, 3, 4, 0, 0}},
         {{0, 0, 4, 0, 2, 0, 5, 6, 1}},
@@ -15,7 +16,7 @@ int main()
         {{6, 4, 9, 8, 3, 0, 2, 0, 7}},
         {{0, 0, 7, 0, 0, 0, 0, 1, 0}}
     }};
-    std::array<std::array<int, 9>, 9> sudokuGrid2 = {{
+    Grid sudokuGrid2 = {{
         {{0, 7, 0, 0, 5, 0, 0, 0, 8}},
         {{0, 0, 0, 0, 8, 9, 7, 4, 0}},
         {{0, 0, 8, 0, 0, 7, 0, 5, 0}},
