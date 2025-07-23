@@ -10,3 +10,26 @@ A simple C++ command-line program that solves a given Sudoku puzzle using backtr
 ## Prerequisites
 
 - C++ compiler with C++17 support
+
+## Build Instructions
+
+1. Clone the repo:
+
+    ```bash
+    git clone https://github.com/LerkkaP/sudoku-solver
+    ```
+
+2. Navigate to project root
+
+3. Build the project (g++):
+
+    ```bash
+    g++ -Iinclude src/*.cpp -o sudoku-solver
+    ```
+
+## Run the project
+
+From the project root run:
+
+```bash
+./sudoku-solver
